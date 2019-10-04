@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <!-- 雪を降らせる -->
+    <SnowFall />
     <div>
       <logo />
       <h1 class="title">
@@ -30,10 +32,13 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+// 雪を降らせるコンポーネントの読み込み
+import SnowFall from '~/components/SnowFall'
 
 export default {
   components: {
-    Logo
+    Logo,
+    SnowFall
   }
 }
 </script>
@@ -46,6 +51,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #000;
 }
 
 .title {
