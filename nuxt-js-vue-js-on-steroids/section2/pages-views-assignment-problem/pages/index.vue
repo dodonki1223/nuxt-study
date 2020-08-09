@@ -6,6 +6,7 @@
       <li>Add two links to the /products page. The links should go to /products/1 and /products/2</li>
       <li>Output the product id on the /products/:pid page</li>
     </ol>
+    <button @click="$router.push('/products')">Go to Products</button>
   </section>
 </template>
 
