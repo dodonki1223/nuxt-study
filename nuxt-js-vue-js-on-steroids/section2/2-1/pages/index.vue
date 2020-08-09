@@ -1,33 +1,11 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        nuxt-course
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js course for Udemy
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <section class="container">
+    <!--  
+      nuxt-link は router-link を拡張しています
+      詳しくは：https://ja.nuxtjs.org/api/components-nuxt-link/
+      -->
+    <nuxt-link to="/users">Users</nuxt-link>
+  </section>
 </template>
 
 <script>
