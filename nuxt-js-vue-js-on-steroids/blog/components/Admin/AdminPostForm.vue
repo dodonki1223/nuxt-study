@@ -45,7 +45,8 @@ export default {
   methods: {
     onSave() {
       // Save the post
-      console.log(this.editedPost);
+      // console.log(this.editedPost);
+      this.$emit('submit', this.editedPost)
     },
     onCancel() {
       // Navigate back
