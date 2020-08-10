@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nuxt />
+    <nuxt/>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 html {
   font-family: 'Open Sans', sans-serif;
 }
+
 body {
   margin: 0;
 }

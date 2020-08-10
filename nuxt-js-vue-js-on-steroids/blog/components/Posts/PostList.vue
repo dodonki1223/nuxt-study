@@ -1,6 +1,6 @@
 <template>
   <section class="post-list">
-    <PostPreview 
+    <PostPreview
       v-for="post in posts"
       :key="post.id"
       :id="post.id"
@@ -31,7 +31,9 @@ export default {
 }
 </script>
 
+
 <style scoped>
+
 .post-list {
   display: flex;
   padding: 20px;
@@ -41,3 +43,4 @@ export default {
   justify-content: center;
 }
 </style>
+

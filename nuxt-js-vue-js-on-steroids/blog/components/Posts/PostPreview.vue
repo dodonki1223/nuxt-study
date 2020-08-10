@@ -1,13 +1,9 @@
 <template>
-  <!-- 
-      nuxt-link は aタグで展開される 
-      class="post-preview" は aタグに対してのクラスの設定になる
-    -->
   <nuxt-link :to="postLink" class="post-preview">
     <article>
-      <div 
-        class="post-thumbnail" 
-        :style="{ backgroundImage: 'url(' + thumbnail + ')' }"></div>
+      <div
+        class="post-thumbnail"
+        :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
       <div class="post-content">
         <h1>{{ title }}</h1>
         <p>{{ previewText }}</p>
@@ -26,7 +22,7 @@ export default {
     },
     isAdmin: {
       type: Boolean,
-      required: true 
+      required: true
     },
     title: {
       type: String,
@@ -48,6 +44,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .post-preview {

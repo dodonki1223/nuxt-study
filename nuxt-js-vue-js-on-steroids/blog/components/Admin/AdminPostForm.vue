@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import AppControlInput from '@/components/UI/AppControlInput'
-import AppButton from '@/components/UI/AppButton'
+import AppControlInput from "@/components/UI/AppControlInput";
+import AppButton from "@/components/UI/AppButton";
 
 export default {
   components: {
@@ -32,15 +32,15 @@ export default {
   },
   data() {
     return {
-      editedPost: this.post 
-        ? { ...this.post } 
+      editedPost: this.post
+        ? { ...this.post }
         : {
-            author: '',
-            title: '',
-            thumbnailLink: '',
-            content: ''
-      }
-    }
+            author: "",
+            title: "",
+            thumbnailLink: "",
+            content: ""
+          }
+    };
   },
   methods: {
     onSave() {
@@ -49,8 +49,8 @@ export default {
     },
     onCancel() {
       // Navigate back
-      this.$router.push('/admin');
+      this.$router.push("/admin");
     }
   }
-}
+};
 </script>

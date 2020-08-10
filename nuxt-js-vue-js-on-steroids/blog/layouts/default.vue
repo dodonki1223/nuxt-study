@@ -1,10 +1,10 @@
 <template>
   <div>
     <TheHeader @sidenavToggle="displaySidenav = !displaySidenav" />
-    <TheSidenav 
+    <TheSidenav
       :show="displaySidenav"
       @close="displaySidenav = false" />
-    <Nuxt />
+    <nuxt/>
   </div>
 </template>
 
@@ -25,10 +25,12 @@ export default {
 }
 </script>
 
+
 <style>
 html {
   font-family: 'Open Sans', sans-serif;
 }
+
 body {
   margin: 0;
 }

@@ -8,40 +8,25 @@
 </template>
 
 <script>
-import PostList from '@/components/Posts/PostList'
+import PostList from "@/components/Posts/PostList";
 
 export default {
   components: {
     PostList
   },
-  /*
-      Nuxt.js は非同期処理を行えるように asyncDataメソッドが定義されている
-      これを使用することでクライアントに送られるデータが 非同期処理が完了後のページ情報が送られる
-      クローラーに優しい仕様になる
-      動的に作成する部分が作成された状態で作される
-   */
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          { 
-            id: '1', 
-            title: "First Post", 
-            previewText: "This is our first post!", 
-            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
-          },
-          { 
-            id: '2', 
-            title: "Second Post", 
-            previewText: "This is our second post!", 
-            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
-          },
-        ]
-      });
-    }, 1500);
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
-}
+  // data() {
+  //   return {
+  //     loadedPosts: []
+  //   };
+  // },
+};
 </script>
+
 
 <style scoped>
 .intro {
@@ -49,7 +34,7 @@ export default {
   position: relative;
   padding: 30px;
   box-sizing: border-box;
-  background-image: url('~assets/images/main-page-background.jpg');
+  background-image: url("~assets/images/main-page-background.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -73,5 +58,14 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
+}
+
+.featured-posts {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 </style>
