@@ -1,0 +1,7 @@
+/*  
+    全ページで使用したいCSSは assets/styles に作成するとよい
+    nuxt.config.js への設定を忘れずに！
+ */
+html, body {
+  margin: 0;
+}
