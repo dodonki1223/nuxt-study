@@ -14,22 +14,35 @@ export default {
   components: {
     PostList
   },
+  /*
+      Nuxt.js は非同期処理を行えるように asyncDataメソッドが定義されている
+      これを使用することでクライアントに送られるデータが 非同期処理が完了後のページ情報が送られる
+      クローラーに優しい仕様になる
+      動的に作成する部分が作成された状態で作される
+   */
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPosts: [
+          { 
+            id: '1', 
+            title: "First Post", 
+            previewText: "This is our first post!", 
+            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
+          },
+          { 
+            id: '2', 
+            title: "Second Post", 
+            previewText: "This is our second post!", 
+            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
+          },
+        ]
+      });
+    }, 1500);
+  },
   data() {
     return {
-      loadedPosts: [
-        { 
-          id: '1', 
-          title: "First Post", 
-          previewText: "This is our first post!", 
-          thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
-        },
-        { 
-          id: '2', 
-          title: "Second Post", 
-          previewText: "This is our second post!", 
-          thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
-        },
-      ]
+      loadedPosts: []
     }
   }
 }
