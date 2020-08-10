@@ -5,7 +5,7 @@
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList isAdmin />
+      <PostList isAdmin :posts="loadedPosts" />
     </section>
   </div>
 </template>
@@ -19,6 +19,26 @@ export default {
   components: {
     PostList,
     AppButton
+  },
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPosts: [
+          { 
+            id: '1', 
+            title: "First Post", 
+            previewText: "This is our first post!", 
+            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
+          },
+          { 
+            id: '2', 
+            title: "Second Post", 
+            previewText: "This is our second post!", 
+            thumbnail: "https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738" 
+          },
+        ]
+      });
+    }, 1500);
   }
 }
 </script>

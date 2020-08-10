@@ -39,11 +39,6 @@ export default {
         ]
       });
     }, 1500);
-  },
-  data() {
-    return {
-      loadedPosts: []
-    }
   }
 }
 </script>
