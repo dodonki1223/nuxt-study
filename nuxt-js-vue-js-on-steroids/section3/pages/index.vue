@@ -4,31 +4,34 @@
       <h1>Get the latest tech news!</h1>
     </section>
     <section class="featured-posts">
-      <!-- 
-          nuxt-link は aタグで展開される 
-          class="post-preview" は aタグに対してのクラスの設定になる
-        -->
-      <nuxt-link :to="'/posts/' + 1" class="post-preview">
-        <article>
-          <div class="post-thumbnail" style="background-image: url(https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738)"></div>
-          <div class="post-content">
-            <h1>Post Title</h1>
-            <p>Preview Text</p>
-          </div>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="'/posts/' + 2" class="post-preview">
-        <article>
-          <div class="post-thumbnail" style="background-image: url(https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738)"></div>
-          <div class="post-content">
-            <h1>Post Title 2</h1>
-            <p>Preview Text 2</p>
-          </div>
-        </article>
-      </nuxt-link>
+      <PostPreview 
+        id="1"
+        thumbnail="https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738"
+        title="Hello there!"
+        previewText="This my first post!" />
+      <PostPreview 
+        id="2"
+        thumbnail="https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738"
+        title="Hello there! second time!"
+        previewText="This my second post!" />
+      <PostPreview 
+        id="3"
+        thumbnail="https://techcrunchjp.files.wordpress.com/2016/05/codecode1.jpg?w=738"
+        title="Hello there! third time!"
+        previewText="This my third post!" />
     </section>
   </div>
 </template>
+
+<script>
+import PostPreview from '@/components/Posts/PostPreview'
+
+export default {
+  components: {
+    PostPreview
+  }
+}
+</script>
 
 <style scoped>
 .intro {
@@ -68,41 +71,5 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
-
-.post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
-  background-color: white;
-  width: 90%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-@media (min-width: 850px) {
-  .post-preview {
-    width: 400px;
-    margin: 10px;
-  }
-}
-
-.post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-}
-
-.post-content {
-  padding: 10px;
-  text-align: center;
-}
-
-a:hover .post-content,
-a:active .post-content {
-  background-color: #ccc;
 }
 </style>
