@@ -1,10 +1,19 @@
 const pkg = require('./package')
 
 module.exports = {
+  /*
+      サーバーサイドレンダリング(`universal`)かSPA(`spa`)のどちらかを選択できる
+      プロジェクトを作った時に選択されたものになる
+      SPAだと事前レンダリングを使用しない形になる（単一のViewファイルが読み込まれるだけ）
+      事前レンダリングを使用したい時は `universal` にする
+   */
   mode: 'universal',
 
   /*
   ** Headers of the page
+  *  共通で使用される head セクションを設定することができる
+  *  CDNの設定を行うのもあり
+  *  上書きしたい場合は特定ページで書き換えてやればよい
   */
   head: {
     title: pkg.name,
