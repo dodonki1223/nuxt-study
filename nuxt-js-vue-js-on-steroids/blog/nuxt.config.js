@@ -76,5 +76,20 @@ module.exports = {
   // 環境変数を設定することができる
   env: {
     baseUrl: process.env.BASE_URL || "https://sample.firebaseio.com"
+  },
+
+  router: {
+    // <nuxt-link> のデフォルトの active class をグローバルに設定する
+    // https://ja.nuxtjs.org/api/configuration-router/#linkactiveclass
+    linkActiveClass: 'active'
+    // 存在しないページへ遷移した時、404にならずに `pages/index.vue` のページを表示する設定になります
+    /*
+      extendRoutes(routes, resolve) {
+        routes.push({
+          path: '*',
+          component: resolve(__dirname, 'pages/index.vue')
+        })
+      }
+     */
   }
 }
