@@ -42,8 +42,7 @@ module.exports = {
   loadingIndicator: {
     name: 'circle',
     color: '#ffa923f'
-  }
-
+  },
  
   /*
   ** Global CSS
@@ -73,5 +72,9 @@ module.exports = {
     extend(config, ctx) {
 
     }
+  },
+  // 環境変数を設定することができる
+  env: {
+    baseUrl: process.env.BASE_URL || "https://sample.firebaseio.com"
   }
 }
