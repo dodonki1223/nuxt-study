@@ -30,9 +30,21 @@ module.exports = {
 
   /*
   ** Customize the progress-bar color
+  *  上に表示される読み込み時のローディングバーのCSSを変更することができる奴
+  *  Rails の turbolinks みたいな奴だと思う。必要ない場合は false にすることもできる
   */
-  loading: { color: '#3B8070' },
+  // loading: false,
+  loading: { color: '#fa923f', height: '4px', duration: 5000 },
+  /*
+      上の設定は画面上部に現れる奴で loadingIndicator はページのど真ん中に表示されるもの
+      Circleを設定するとクルクルと回ってユーザーの視点的にはわかりやすくなると思われる
+   */
+  loadingIndicator: {
+    name: 'circle',
+    color: '#ffa923f'
+  }
 
+ 
   /*
   ** Global CSS
   */
