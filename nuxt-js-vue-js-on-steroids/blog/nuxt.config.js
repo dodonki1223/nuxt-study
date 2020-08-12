@@ -48,6 +48,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~assets/styles/main.css'
   ],
 
   /*
@@ -81,7 +82,9 @@ module.exports = {
   router: {
     // <nuxt-link> のデフォルトの active class をグローバルに設定する
     // https://ja.nuxtjs.org/api/configuration-router/#linkactiveclass
-    linkActiveClass: 'active'
+    /*
+      linkActiveClass: 'active'
+     */ 
     // 存在しないページへ遷移した時、404にならずに `pages/index.vue` のページを表示する設定になります
     /*
       extendRoutes(routes, resolve) {
@@ -91,5 +94,14 @@ module.exports = {
         })
       }
      */
+  },
+
+  /* 
+      CSSの設定でグローバルに読み込む css ファイルを追加しそこにアニメーション用の設定を追加したある
+      fade のアニメーションが追加されるようになっている
+   */
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }
