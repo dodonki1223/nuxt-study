@@ -53,8 +53,10 @@ module.exports = {
 
   /*
   ** Plugins to load before mounting the App
+  * 特定の機能をロードして特定のコードを実行できる便利な機能
   */
   plugins: [
+    '~plugins/core-components.js'
   ],
 
   /*
