@@ -13,6 +13,11 @@ import TheHeader from '@/components/Navigation/TheHeader'
 import TheSidenav from '@/components/Navigation/TheSidenav'
 
 export default {
+  /*
+    特定のレイアウトごとで middleware を実行したい場合はここに追加するとよい
+    認証が必要なページとそうで無いページで分けて使うなど良さそう
+   */
+  // middleware: 'log',
   components: {
     TheHeader,
     TheSidenav

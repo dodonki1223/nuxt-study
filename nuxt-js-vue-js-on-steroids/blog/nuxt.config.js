@@ -76,5 +76,10 @@ module.exports = {
   transition: {
     name: 'fade',
     mode: 'out-in'
+  },
+  router: {
+    // 全部のページに対して middleware を実行したい時はRouteに設定する
+    // ただしページでリダイレクト処理等行われているとその分実行されてしまう
+    middleware: 'log'
   }
 }
