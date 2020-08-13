@@ -1,26 +1,17 @@
 const pkg = require('./package')
 
 module.exports = {
-  /*
-      サーバーサイドレンダリング(`universal`)かSPA(`spa`)のどちらかを選択できる
-      プロジェクトを作った時に選択されたものになる
-      SPAだと事前レンダリングを使用しない形になる（単一のViewファイルが読み込まれるだけ）
-      事前レンダリングを使用したい時は `universal` にする
-   */
   mode: 'universal',
 
   /*
   ** Headers of the page
-  *  共通で使用される head セクションを設定することができる
-  *  CDNの設定を行うのもあり
-  *  上書きしたい場合は特定ページで書き換えてやればよい
   */
   head: {
-    title: pkg.name,
+    title: 'WD Blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'My cool Web Development Blog' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -30,20 +21,13 @@ module.exports = {
 
   /*
   ** Customize the progress-bar color
-  *  上に表示される読み込み時のローディングバーのCSSを変更することができる奴
-  *  Rails の turbolinks みたいな奴だと思う。必要ない場合は false にすることもできる
   */
-  // loading: false,
   loading: { color: '#fa923f', height: '4px', duration: 5000 },
-  /*
-      上の設定は画面上部に現れる奴で loadingIndicator はページのど真ん中に表示されるもの
-      Circleを設定するとクルクルと回ってユーザーの視点的にはわかりやすくなると思われる
-   */
   loadingIndicator: {
     name: 'circle',
-    color: '#ffa923f'
+    color: '#fa923f'
   },
- 
+
   /*
   ** Global CSS
   */
@@ -53,17 +37,27 @@ module.exports = {
 
   /*
   ** Plugins to load before mounting the App
-  * 特定の機能をロードして特定のコードを実行できる便利な機能
+  *    Nuxt.js では JavaScript プラグインを定義することができ、それはルートの Vue.js アプリ
+  *    ケーションがインスタンス化される前に実行されます。この機能は、自前のライブラリや外部の
+  *    モジュールを使用する際にとりわけ有用です
   */
   plugins: [
-    '~plugins/core-components.js'
+    '~plugins/core-components.js',
+    '~plugins/date-filter.js'
   ],
 
   /*
   ** Nuxt.js modules
+  * > Nuxt.js のコア機能を拡張し、無限のインテグレーションを加える Nuxt.js の拡張機能
+  *   https://ja.nuxtjs.org/guide/modules/
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios: {
+    baseURL: process.env.BASE_URL || 'https://sample.firebaseio.com',
+    credentials: false
+  },
 
   /*
   ** Build configuration
@@ -76,32 +70,9 @@ module.exports = {
 
     }
   },
-  // 環境変数を設定することができる
   env: {
-    baseUrl: process.env.BASE_URL || "https://sample.firebaseio.com"
+    baseUrl: process.env.BASE_URL || 'https://sample.firebaseio.com'
   },
-
-  router: {
-    // <nuxt-link> のデフォルトの active class をグローバルに設定する
-    // https://ja.nuxtjs.org/api/configuration-router/#linkactiveclass
-    /*
-      linkActiveClass: 'active'
-     */ 
-    // 存在しないページへ遷移した時、404にならずに `pages/index.vue` のページを表示する設定になります
-    /*
-      extendRoutes(routes, resolve) {
-        routes.push({
-          path: '*',
-          component: resolve(__dirname, 'pages/index.vue')
-        })
-      }
-     */
-  },
-
-  /* 
-      CSSの設定でグローバルに読み込む css ファイルを追加しそこにアニメーション用の設定を追加したある
-      fade のアニメーションが追加されるようになっている
-   */
   transition: {
     name: 'fade',
     mode: 'out-in'
