@@ -71,7 +71,8 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://sample.firebaseio.com'
+    baseUrl: process.env.BASE_URL || 'https://sample.firebaseio.com',
+    fbAPIKey: 'sampleapikey'
   },
   transition: {
     name: 'fade',
@@ -80,6 +81,6 @@ module.exports = {
   router: {
     // 全部のページに対して middleware を実行したい時はRouteに設定する
     // ただしページでリダイレクト処理等行われているとその分実行されてしまう
-    middleware: 'log'
+    // middleware: 'log'
   }
 }
