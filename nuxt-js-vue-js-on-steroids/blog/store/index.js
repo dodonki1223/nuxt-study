@@ -47,13 +47,18 @@ const createStore = () => {
           updatedDate: new Date()
         }
         return axios
-          .post(process.env.baseUrl + "/posts.json", createdPost)
+          .post(process.env.baseUrl + "/posts.json?auth=" + vuexContext.state.token, createdPost)
           .then(result => {
             vuexContext.commit('addPost', { ...createdPost, id: result.data.name })
           })
       },
       editPost(vuexContext, editedPost) {
-        return axios.put(process.env.baseUrl + "/posts/" + editedPost.id + ".json", editedPost)
+        /*
+          <Firebase IDトークンにて認証するやり方>
+            https://firebase.google.com/docs/database/rest/auth?hl=ja#authenticate_with_an_id_token
+         */
+        console.log(vuexContext.state.token);
+        return axios.put(process.env.baseUrl + "/posts/" + editedPost.id + ".json?auth=" + vuexContext.state.token, editedPost)
           .then(res => {
             vuexContext.commit("editPost", editedPost)
           })
