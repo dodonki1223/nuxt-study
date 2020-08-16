@@ -72,7 +72,7 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'https://sample.firebaseio.com',
-    fbAPIKey: 'sampleapikey'
+    fbAPIKey: 'sampleApiKey'
   },
   transition: {
     name: 'fade',
