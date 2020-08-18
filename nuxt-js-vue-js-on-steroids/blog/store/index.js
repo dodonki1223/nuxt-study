@@ -35,7 +35,7 @@ const createStore = () => {
               for (const key in res.data) {
                 postsArray.push({ ...res.data[key], id: key })
               }
-              vuexContext.commit('setPosts', postsArray)
+              vuexContext.commit("setPosts", postsArray)
             })
           .catch(e => context.error(e));
       },
@@ -52,7 +52,7 @@ const createStore = () => {
         return axios
           .post(process.env.baseUrl + "/posts.json?auth=" + vuexContext.state.token, createdPost)
           .then(result => {
-            vuexContext.commit('addPost', { ...createdPost, id: result.data.name })
+            vuexContext.commit("addPost", { ...createdPost, id: result.data.name })
           })
       },
       editPost(vuexContext, editedPost) {
@@ -73,9 +73,9 @@ const createStore = () => {
       authenticateUser(vuexContext, authData) {
         // 詳しくはFirebase の REST APIを確認すること
         // https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
-        let authUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + process.env.fbAPIKey
+        let authUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + process.env.fbAPIKey
         if (!authData.isLogin) {
-          authUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + process.env.fbAPIKey;
+          authUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + process.env.fbAPIKey;
         }
         return this.$axios
           .$post(authUrl, {
@@ -84,15 +84,29 @@ const createStore = () => {
               returnSecureToken: true
             }
           ).then(result => {
-            vuexContext.commit('setToken', result.idToken);
-            vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000)
+            vuexContext.commit("setToken", result.idToken);
+            localStorage.setItem("token", result.idToken);
+            localStorage.setItem("tokenExpiration", new Date().getTime() + result.expiresIn * 1000);
+            vuexContext.dispatch("setLogoutTimer", result.expiresIn * 1000)
           })
           .catch(e => console.log(e));
       },
       setLogoutTimer(vuexContext, duration) {
         setTimeout(() => {
-          vuexContext.commit('clearToken')
+          vuexContext.commit("clearToken")
         }, duration)
+      },
+      initAuth(vuexContext) {
+        // 以前、トークンに保存したものか未定義のどちらかになる
+        const token = localStorage.getItem("token");
+        const expirationDate = localStorage.getItem("tokenExpiration")
+
+        // +expirationDate +をつけることで文字列を数値に変換する
+        if (new Date().getTime() > +expirationDate || !token) {
+          return;
+        }
+        vuexContext.dispatch("setLogoutTimer", +expirationDate - new Date().getTime())
+        vuexContext.commit("setToken", token);
       }
     },
     getters: {
