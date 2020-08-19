@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const bodyParser = require("body-parser")
 
 module.exports = {
   mode: 'universal',
@@ -82,5 +83,9 @@ module.exports = {
     // 全部のページに対して middleware を実行したい時はRouteに設定する
     // ただしページでリダイレクト処理等行われているとその分実行されてしまう
     // middleware: 'log'
-  }
+  },
+  serverMiddleware: [
+    bodyParser.json() ,
+    "~/api"
+  ]
 }
