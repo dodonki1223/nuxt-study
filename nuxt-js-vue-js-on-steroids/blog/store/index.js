@@ -112,10 +112,13 @@ const createStore = () => {
             .split(";")
             .find(c => c.trim().startsWith("expirationDate="))
             .split("=")[1];
-        } else {
+        } else if (process.client) {
           // 以前、トークンに保存したものか未定義のどちらかになる
           token = localStorage.getItem("token");
           expirationDate = localStorage.getItem("tokenExpiration")
+        } else {
+          token = null;
+          expirationDate = null;
         }
         // +expirationDate +をつけることで文字列を数値に変換する
         if (new Date().getTime() > +expirationDate || !token) {
