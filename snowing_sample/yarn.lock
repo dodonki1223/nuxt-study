@@ -5854,7 +5854,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt@^2.0.0:
+nuxt@^2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.10.0.tgz#854c21e87c8b237359253b9419f05149b6214b63"
   integrity sha512-Hl5hbT6gbfNXinY74oFvYroa0d0rCKpJQgJaLDN57e8CZu9kCe/90Gr21BX1+npcguIicjup5EXZ4GwzlcXKDA==

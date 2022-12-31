@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.10.0",
     "particles.js": "^2.0.0"
   },
   "devDependencies": {
